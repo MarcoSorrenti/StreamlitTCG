@@ -31,7 +31,7 @@ def fix_excel(file_path):
 st.title("Storage")
 
 # file_path = os.path.join("Dataset", "tcg_monitor.xlsx")
-file_path = "./Dataset/tcg_monitor.xlsx"
+file_path = "Dataset/tcg_monitor.xlsx"
 print(file_path)
 fix_excel(file_path)
 
