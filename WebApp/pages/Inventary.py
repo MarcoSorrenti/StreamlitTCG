@@ -32,7 +32,7 @@ def fix_excel(file_path):
 st.title("Inventario")
 
 file_path = os.path.join("..", "Dataset", "tcg_monitor.xlsx")
-
+print(file_path)
 fix_excel(file_path)
 
 if os.path.exists(file_path):
