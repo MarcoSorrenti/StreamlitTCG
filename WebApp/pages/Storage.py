@@ -30,7 +30,7 @@ def fix_excel(file_path):
 
 st.title("Storage")
 
-file_path = "./Dataset/tcg_monitor.xlsx"
+file_path = os.path.join(".", "Dataset", "tcg_monitor.xlsx")
 
 fix_excel(file_path)
 
@@ -55,7 +55,9 @@ if os.path.exists(file_path):
     merged["variazione_percentuale_tendenza_prezzo_global"] = ((merged["tendenza_prezzo_global_seconda_data"] - merged["tendenza_prezzo_global"]) / merged["tendenza_prezzo_global"].replace(0, pd.NA)).mul(100).astype(float).round(2)
     merged["variazione_percentuale_articoli_disponibili"] = ((merged["articoli_disponibili_seconda_data"] - merged["articoli_disponibili"]) / merged["articoli_disponibili"].replace(0, pd.NA)).mul(100).astype(float).round(2)
     merged = merged.sort_values("prezzo_minimo", ascending= False)
-    merged['image_path'] = "./" + merged['image_path']
+    # merged['image_path'] = "./" + merged['image_path']
+    merged['image_path'] = merged['image_path'].apply(lambda x: os.path.join(".", x))
+
     st.dataframe(merged.reset_index(drop=True), use_container_width=True)
 
     # Aggiungi l'intestazione
