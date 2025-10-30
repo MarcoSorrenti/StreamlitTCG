@@ -31,8 +31,8 @@ def fix_excel(file_path):
 st.title("Storage")
 
 # file_path = os.path.join("Dataset", "tcg_monitor.xlsx")
-file_path = "Dataset/tcg_monitor.xlsx"
-print(file_path)
+file_path = "tcg_monitor.xlsx"
+
 fix_excel(file_path)
 
 if os.path.exists(file_path):
