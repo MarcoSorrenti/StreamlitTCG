@@ -31,7 +31,7 @@ def fix_excel(file_path):
 
 st.title("Inventario")
 
-file_path = "../Dataset/tcg_monitor.xlsx"
+file_path = "./Dataset/tcg_monitor.xlsx"
 fix_excel(file_path)
 
 if os.path.exists(file_path):
@@ -104,7 +104,7 @@ if os.path.exists(file_path):
     cols_to_show = ["image_path", "nome_carta_completo", "specie", "rarita", "prezzo_minimo"]
 
     # Aggiungi il prefisso all'immagine
-    df_inventario['image_path'] = "../" + df_inventario['image_path']
+    df_inventario['image_path'] = "./" + df_inventario['image_path']
 
     # Seleziona solo le colonne necessarie
     cards = df_inventario[cols_to_show]
