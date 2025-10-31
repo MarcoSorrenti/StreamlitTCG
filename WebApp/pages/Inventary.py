@@ -109,8 +109,9 @@ if os.path.exists(file_path):
     # Aggiungi il prefisso all'immagine
     current_dir = os.path.dirname(__file__)
     base_dir = os.path.abspath(os.path.join(current_dir, ".."))
-    df_inventario['image_path'] = df_inventario['image_path'].apply(lambda x: os.path.join(base_dir, x))
-
+    df_inventario["image_path"] = df_inventario["image_path"].apply(
+        lambda x: os.path.normpath(os.path.join(base_dir, x.replace("\\", "/"))) if pd.notna(x) else x
+    )
     # Seleziona solo le colonne necessarie
     cards = df_inventario[cols_to_show]
 

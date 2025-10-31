@@ -60,8 +60,10 @@ if os.path.exists(file_path):
     # Aggiungi il prefisso all'immagine
     current_dir = os.path.dirname(__file__)
     base_dir = os.path.abspath(os.path.join(current_dir, ".."))
-    merged['image_path'] = merged['image_path'].apply(lambda x: os.path.join(base_dir, x))
-
+    # merged['image_path'] = merged['image_path'].apply(lambda x: os.path.join(base_dir, x))
+    merged['image_path'] = merged['image_path'].apply(
+        lambda x: os.path.normpath(os.path.join(base_dir, x.replace("\\", "/"))) if pd.notna(x) else x
+    )
     st.dataframe(merged.reset_index(drop=True), use_container_width=True)
 
     # Aggiungi l'intestazione
