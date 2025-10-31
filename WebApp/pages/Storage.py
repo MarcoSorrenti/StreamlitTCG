@@ -69,7 +69,7 @@ if os.path.exists(file_path):
     # Aggiungi l'intestazione
     st.subheader("Carte in inventario")
 
-    cols_to_show = ["image_path", "nome_carta_completo", "specie", "rarita", "prezzo_minimo", "prezzo_minimo_professional", "articoli_disponibili", "variazione_percentuale_prezzo_minimo", "variazione_percentuale_prezzo_minimo_professional", "variazione_percentuale_tendenza_prezzo_global", "variazione_percentuale_articoli_disponibili"]
+    cols_to_show = ["image_path", "nome_carta_completo", "specie", "rarita", "cardmarket_path", "condizione_carta", "prezzo_minimo", "prezzo_minimo_professional", "articoli_disponibili", "variazione_percentuale_prezzo_minimo", "variazione_percentuale_prezzo_minimo_professional", "variazione_percentuale_tendenza_prezzo_global", "variazione_percentuale_articoli_disponibili"]
     cards = merged[cols_to_show]
     num_columns = 5
     cols = st.columns(num_columns)
