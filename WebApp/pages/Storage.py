@@ -91,6 +91,8 @@ if os.path.exists(file_path):
             tile.markdown('<style>img { height: 400px; object-fit: cover; }</style>', unsafe_allow_html=True)
             tile.write(f"**Specie:** {row.specie}")
             tile.write(f"**Rarità:** {row.rarita}")
+            tile.write(f"**Condizione Carta:** {row.condizione_carta}")
+            tile.markdown(f'**Link CardMarket:** [Link]({row.cardmarket_path})')
             tile.write(f"**Articoli disponibili:** {row.articoli_disponibili}")
             tile.write(f"**Prezzo:** {row.prezzo_minimo}€")
             tile.write(f"**Prezzo PRO:** {row.prezzo_minimo_professional}€")
