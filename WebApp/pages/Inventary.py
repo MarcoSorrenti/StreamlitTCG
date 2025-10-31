@@ -40,6 +40,49 @@ fix_excel(file_path)
 if os.path.exists(file_path):
     df = pd.read_excel(file_path)
 
+    # -------------------------------
+    # 🔍 FILTRI A TENDINA GLOBALI
+    # -------------------------------
+    st.sidebar.header("Filtri carte")
+
+    nome_filter = st.sidebar.multiselect(
+        "Nome carta completo",
+        options=sorted(df["nome_carta_completo"].dropna().unique()),
+        default=None,
+    )
+
+    rarita_filter = st.sidebar.multiselect(
+        "Rarità",
+        options=sorted(df["rarita"].dropna().unique()),
+        default=None,
+    )
+
+    lingua_filter = st.sidebar.multiselect(
+        "Lingua",
+        options=sorted(df["lingua"].dropna().unique()),
+        default=None,
+    )
+
+    condizione_filter = st.sidebar.multiselect(
+        "Condizione carta",
+        options=sorted(df["condizione_carta"].dropna().unique()),
+        default=None,
+    )
+
+    # Applica i filtri se selezionati
+    df_filtered = df.copy()
+    if nome_filter:
+        df_filtered = df_filtered[df_filtered["nome_carta_completo"].isin(nome_filter)]
+    if rarita_filter:
+        df_filtered = df_filtered[df_filtered["rarita"].isin(rarita_filter)]
+    if lingua_filter:
+        df_filtered = df_filtered[df_filtered["lingua"].isin(lingua_filter)]
+    if condizione_filter:
+        df_filtered = df_filtered[df_filtered["condizione_carta"].isin(condizione_filter)]
+
+    # Ora usa df_filtered al posto di df in tutto il resto del codice
+    df = df_filtered
+
     # Ottieni il prezzo_minimo più recente per ogni combinazione unica
     idx_latest = df.groupby("nome_carta_completo")["data"].idxmax()
     df_latest_prices = df.loc[idx_latest, ["nome_carta_completo", "prezzo_minimo"]]
