@@ -31,8 +31,10 @@ def fix_excel(file_path):
 
 st.title("Inventario")
 
-file_path = "tcg_monitor.xlsx"
-print(file_path)
+current_dir = os.path.dirname(__file__)
+base_dir = os.path.abspath(os.path.join(current_dir, ".."))
+file_path = os.path.join(base_dir, "Dataset", "tcg_monitor.xlsx")
+
 fix_excel(file_path)
 
 if os.path.exists(file_path):
@@ -105,8 +107,9 @@ if os.path.exists(file_path):
     cols_to_show = ["image_path", "nome_carta_completo", "specie", "rarita", "prezzo_minimo"]
 
     # Aggiungi il prefisso all'immagine
-    # df_inventario['image_path'] = "./" + df_inventario['image_path']
-    df_inventario['image_path'] = df_inventario['image_path'].apply(lambda x: os.path.join(".", x))
+    current_dir = os.path.dirname(__file__)
+    base_dir = os.path.abspath(os.path.join(current_dir, ".."))
+    df_inventario['image_path'] = df_inventario['image_path'].apply(lambda x: os.path.join(base_dir, x))
 
     # Seleziona solo le colonne necessarie
     cards = df_inventario[cols_to_show]
