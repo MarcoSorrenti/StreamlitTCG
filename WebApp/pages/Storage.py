@@ -31,7 +31,11 @@ def fix_excel(file_path):
 st.title("Storage")
 
 # file_path = os.path.join("Dataset", "tcg_monitor.xlsx")
-file_path = "Dataset/tcg_monitor.xlsx"
+current_dir = os.path.dirname(__file__)
+base_dir = os.path.abspath(os.path.join(current_dir, ".."))
+file_path = os.path.join(base_dir, "Dataset", "tcg_monitor.xlsx")
+
+# file_path = "Dataset/tcg_monitor.xlsx"
 
 st.write("Percorso usato:", file_path)
 st.write("File esiste:", os.path.exists(file_path))
